@@ -4,6 +4,7 @@ This small go app to help you migrate from helm2 to helm3,
 it uses the nice plugin: `helm-2to3`.
 
 The purpose for this app is only for ensuring automation.
+The migration guide: https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/
 
 
 ### Prerequisite
