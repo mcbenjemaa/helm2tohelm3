@@ -13,7 +13,7 @@ import (
 )
 
 var (
-	cluster = flag.String("cluster", "mcs-eu-dev-dom", "The target cluster to run the migrate on.")
+	cluster = flag.String("cluster", "minikube", "The target cluster to run the migrate on.")
 	restore = flag.Bool("restore", false, "Restore Helm2 releases")
 	actions = flag.String("actions", "move-convert-cleanup", "The Actions you want to execute: 'move' (configuration), 'convert' (releases), 'cleanup'. separate actions by '-'")
 	backupDir = flag.String("backup-dir", "", "The path for Backup files")
