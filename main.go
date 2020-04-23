@@ -13,10 +13,11 @@ import (
 )
 
 var (
-	cluster = flag.String("cluster", "minikube", "The target cluster to run the migrate on.")
+	cluster = flag.String("context", "minikube", "The target cluster to run the migrate on.")
 	restore = flag.Bool("restore", false, "Restore Helm2 releases")
 	actions = flag.String("actions", "move-convert-cleanup", "The Actions you want to execute: 'move' (configuration), 'convert' (releases), 'cleanup'. separate actions by '-'")
 	backupDir = flag.String("backup-dir", "", "The path for Backup files")
+	reset = flag.Bool("reset", false, "Reset the created Helm3 releases, this will revoke managed helm3 releases, execute this only when the helm2 still manage the releases.")
 )
 
 func main() {
@@ -35,6 +36,8 @@ func run()  {
 		if utils.YesNo("Are you sure want to restore the data") {
 			backup.Restore(*cluster, *backupDir)
 		}
+	} else if *reset {
+		migrate.Reset()
 	} else {
 		if strings.Contains(*actions, "convert") {
 			backup.ExecuteBackup(*cluster, *backupDir)

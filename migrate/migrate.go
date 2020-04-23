@@ -116,3 +116,21 @@ func migrateRelease(r string, b bool)  error {
 
 	return err
 }
+
+
+func Reset() {
+	logrus.Infof("------> Reset of Helm v3 data\n\n")
+	c := exec.Command{
+		Command: "kubectl delete secrets --all-namespaces --selector \"owner=helm\"",
+		Execute: true,
+	}
+
+	c.DryRunMode(false)
+	logrus.Infof("Executing '%s'", c.Command)
+	if utils.YesNo("Are you sure you want to reset Helm v3 data") {
+		err := c.Exec()
+		if err != nil {
+			logrus.Errorf("Could not execute the script %v:", err)
+		}
+	}
+}
