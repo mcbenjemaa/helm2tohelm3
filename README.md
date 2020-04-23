@@ -52,7 +52,7 @@ helm2tohelm3 --context minikube --backup-dir somedir/
 
 | Cli Flag       | Description | Example |
 | -------------- | -------------- |:-----------:|
-| `--context`    | The target cluster to run the migrate on. (default "mcs-eu-dev-dom") | `helm2tohelm3 --context minikube`
+| `--context`    | The target cluster to run the migrate on. (default "minikube") | `helm2tohelm3 --context minikube`
 | `--restore`    | After creating helm2 Backup you can restore the data the the cluster.  | `helm2tohelm3 --context minikube --restore`
 | `--actions`    | To ignore same actions then this flag is good for you: default to `move-convert-cleanup` (please use the separator between actions `-`)  | `helm2tohelm3 --actions convert-cleanup`
 | `--backup-dir` | The directory where you want to store the backup files, or to load from | `helm2tohelm3 --context minikube --backup-dir backup/output-files`
